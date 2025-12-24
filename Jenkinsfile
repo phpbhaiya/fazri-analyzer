@@ -141,7 +141,7 @@ pipeline {
                         attempt=0
                         
                         while [ \$attempt -lt \$max_attempts ]; do
-                            if curl -f http://localhost:${HOST_PORT} > /dev/null 2>&1; then
+                            if curl -f http://10.69.5.100:${HOST_PORT} > /dev/null 2>&1; then
                                 echo "✅ Application is healthy!"
                                 docker ps | grep ${CONTAINER_NAME}
                                 exit 0
@@ -170,7 +170,7 @@ pipeline {
                 ====================================
                 Image: ${IMAGE_NAME}:${IMAGE_TAG}
                 Container: ${CONTAINER_NAME}
-                URL: http://localhost:${HOST_PORT}
+                URL: http://10.69.5.100:${HOST_PORT}
                 Build: #${env.BUILD_NUMBER}
                 Commit: ${env.GIT_COMMIT}
                 ====================================
